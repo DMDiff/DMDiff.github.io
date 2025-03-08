@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="soon">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GBR: Generative Bundle Refinement for High-fidelity Gaussian Splatting and Meshing</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script> -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <!-- <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet"> -->
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <!-- <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"> -->
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="stylesheet" href="./static/css/comparison.css">
+  <!-- <link rel="icon" href="./static/images/favicon.svg"> -->
+
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <title>Image Centering</title>
+    <style>
+        .image-container {
+            text-align: center;
+        }
+        .image-container img {
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+<!-- authors -->
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">GBR: Generative Bundle Refinement for High-fidelity Gaussian Splatting and Meshing</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="">Jianing Zhang</a><sup>1</sup></span>&nbsp;&nbsp;
+            <span class="author-block">
+              <a href="">Yuchao Zheng</a><sup>3</sup>&nbsp;&nbsp;
+            </span>
+            <span class="author-block">
+              <a href="">Ziwei Li</a><sup>1</sup>&nbsp;&nbsp;
+            </span>
+            <span class="author-block">
+              <a href=""> Qionghai Dai</a><sup>3</sup>&nbsp;&nbsp;
+            </span>
+            <span class="author-block">
+              <a href="">Xiaoyun Yuan</a><sup>2</sup>&nbsp;&nbsp;
+            </span>
+            <br>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Fudan University</span>&nbsp;&nbsp;
+            <span class="author-block"><sup>2</sup>Shanghai Jiao Tong University</span>
+            <span class="author-block"><sup>3</sup>Tsinghua University</span>
+            <br>
+            <span class="email-link">
+              <!-- <a href="mailto:maikeyeweicai@gmail.com">maikeyeweicai@gmail.com</a> -->
+              &nbsp;&nbsp;
+              <!-- <a href="mailto:tonghe90@gmail.com">tonghe90@gmail.com</a> -->
+            </span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="paper/GBR.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2412.05908"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <!-- <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a class="external-link button is-normal is-rounded">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Coming soon</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <!-- <span class="link-block">
+                <a href="https://github.com/google/nerfies/releases/tag/0.1"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a> -->
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- teaser.png -->
+<!-- <section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img id="teaser" height="100%" src="./static/images/teaser.png" alt="ND-SDF teaser."/>
+      <p>
+        We present <b>ND-SDF</b>, a framework for high-fidelity 3D indoor surface reconstruction from multi-views. Shown above is an extracted mesh from ScanNet++.
+      </p>
+    </div>
+  </div>
+</section> -->
+
+<!-- Video -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3" style="text-align: center;">Videos</h2>
+    <video controls width="100%" height="100%" src="./static/videos/final.mp4" type="video/mp4" autoplay muted loop playsinline></video> 
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Gaussian splatting has gained attention for its efficient representation and rendering of 3D scenes using continuous Gaussian primitives. However, it struggles with sparse-view inputs due to limited geometric and photometric information, causing ambiguities in depth, shape, and texture, as well as challenges in ensuring spatial consistency and geometry accuracy. To address these limitations, we propose GBR: Generative Bundle Refinement, a method for high-fidelity Gaussian splatting and meshing using only 4–6 input views. GBR integrates a neural bundle adjustment module for enhanced geometry accuracy and a generative depth refinement module to improve geometry fidelity. More specifically, the neural bundle adjustment module integrates a foundation network to produce initial 3D point maps and point matches from unposed images, followed by bundle optimization to improve cross-view consistency and accuracy. The generative depth refinement module employs a diffusion-based strategy to enhance geometric details and fidelity while preserving the depth scale. Finally, for Gaussian primitives learning, we propose a multimodal loss function incorporating depth and normal consistency, geometric regularization, and pseudo-view generation, providing robust guidance under sparse-view conditions. Experiments on widely-used datasets show that GBR significantly outperforms existing methods under sparse-view inputs. Additionally, GBR demonstrates the ability to reconstruct and render large-scale real scenes, such as the Great Wall, with remarkable detail using only 6 views.
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Method</h2>
+        <div class="content has-text-justified">
+          <img src="./static/images/system.png"
+               class="framework-image"
+               alt="PGSR overview."/>
+          <p>
+            Overview of our algorithm: Given sparse, pose-free camera inputs, we first employ neural Bundle Adjustment (neural-BA), combining neural-based MVS with traditional optimization techniques to obtain a dense, accurate point cloud along with precise intrinsic and extrinsic camera matrices, providing a robust initialization for 3DGS. Next, the dense point cloud is projected to obtain depth maps with accurate scale, and a diffusion process is applied to enhance the depth map resolution, resulting in scale-consistent, detail-rich depth and normal maps. These geometric constraints subsequently aid in the training of 3DGS, ultimately achieving a geometrically accurate 3DGS.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr>
+<!-- Comparisons -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3" style="text-align: center;">Comparisons</h2>
+      <!-- DTU -->
+      <center>
+        <div class="content">
+          <h2 class="title is-4">DTU meshes generated from 4 unposed images</h2>
+          <div class="button-container" id="btn1">
+            <button onclick="changeImages(event, 'cmp1','./static/images/cmp/2dgs/24_2dgs.png', './static/images/cmp/ours/24_ours.png')" class="cmp-button cmp-btn-checked">scan_24</button>
+            <button onclick="changeImages(event, 'cmp1','./static/images/cmp/2dgs/40_2dgs.png', './static/images/cmp/ours/40_ours.png')" class="cmp-button">scan_40</button>
+            <button onclick="changeImages(event, 'cmp1','./static/images/cmp/2dgs/105_2dgs.png', './static/images/cmp/ours/105_ours.png')" class="cmp-button">scan_105</button>
+          </div>
+          <div class="cmp-container" id="cmp1">
+              <div class="bottom">
+                  <img src="./static/images/cmp/ours/24_ours.png"/>
+              </div>
+              <div class="top">
+                  <img src="./static/images/cmp/2dgs/24_2dgs.png"/>
+              </div>
+              <div class="cmp-slider"></div>
+          </div>
+        </div>
+      </center>
+        
+      <br/>
+      
+      <div class="image-container">
+        <h2 class="title is-4" style="text-align: center;">More Results</h2>
+            <img style="width: 100%;" src="./static/images/all_dtu.png"/>
+            </object>
+      </div>
+
+
+      <!-- Mip360 & TnT -->
+      <center>
+        <br/>
+        <div class="content">
+          <h2 class="title is-4">Mip360 & TnT normal maps generated from 6 unposed images</h2>
+          <div class="button-container" id="btn3">
+            <button onclick="changeImages(event, 'cmp2','./static/images/cmp/2dgs/ig_2dgs.png', './static/images/cmp/ours/ig_ours.png')" class="cmp-button cmp-btn-checked">Ignatius</button>
+            <button onclick="changeImages(event, 'cmp2','./static/images/cmp/2dgs/ch_2dgs.png', './static/images/cmp/ours/ch_ours.png')" class="cmp-button">Courthouse</button>
+            <button onclick="changeImages(event, 'cmp2','./static/images/cmp/2dgs/garden_2dgs.png', './static/images/cmp/ours/garden_ours.png')" class="cmp-button">Garden</button>
+            <button onclick="changeImages(event, 'cmp2','./static/images/cmp/2dgs/room_2dgs.png', './static/images/cmp/ours/room_ours.png')" class="cmp-button">Room</button>
+          </div>
+          <div class="cmp-container" id="cmp2">
+              <div class="bottom">
+                  <img src="./static/images/cmp/ours/ig_ours.png"/>
+              </div>
+              <div class="top">
+                  <img src="./static/images/cmp/2dgs/ig_2dgs.png"/>
+              </div>
+              <div class="cmp-slider"></div>
+          </div>
+        </div>
+      </center>
+    
+      <br/>
+      <div class="image-container">
+        <h2 class="title is-4">More Results</h2>
+        <img style="width: 80%;" src="static/images/more_results.png"/>
+            </object>
+      </div>
+
+      
+      <!-- Mip360 & TnT -->
+      <center>
+        <br/>
+        <div class="content">
+          <h2 class="title is-4">Mip360 view synthesis with 6 unposed images</h2>
+          <div class="button-container" id="btn4">
+            <button onclick="changeImages(event, 'cmp3','./static/images/cmp/2dgs/garden_2dgs_img.png', './static/images/cmp/ours/garden_ours_img.png')" class="cmp-button cmp-btn-checked">Garden</button>
+            <button onclick="changeImages(event, 'cmp3','./static/images/cmp/2dgs/room_2dgs_img.png', './static/images/cmp/ours/room_ours_img.png')" class="cmp-button">Room</button>
+            <button onclick="changeImages(event, 'cmp3','./static/images/cmp/2dgs/kitchen_2dgs_img.png', './static/images/cmp/ours/kitchen_ours_img.png')" class="cmp-button">Kitchen</button>
+          </div>
+          <div class="cmp-container" id="cmp3">
+              <div class="bottom">
+                  <img src="./static/images/cmp/ours/garden_ours_img.png"/>
+              </div>
+              <div class="top">
+                  <img src="./static/images/cmp/2dgs/garden_2dgs_img.png"/>
+              </div>
+              <div class="cmp-slider"></div>
+          </div>
+        </div>
+      </center>
+
+    </div>
+  <script src="./static/js/comparison.js"></script>
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>
+      @misc{zhang2024gbrgenerativebundlerefinement,
+        title={GBR: Generative Bundle Refinement for High-fidelity Gaussian Splatting and Meshing}, 
+        author={Jianing Zhang and Yuchao Zheng and Ziwei Li and Qionghai Dai and Xiaoyun Yuan},
+        year={2024},
+        eprint={2412.05908},
+        archivePrefix={arXiv},
+        primaryClass={cs.CV},
+        url={https://arxiv.org/abs/2412.05908}, 
+  }
+      ```</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="./static/videos/nerfies_paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            We thank <a href="https://github.com/nerfies/nerfies.github.io" target="_blank">Nerfies</a> for their amazing template.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
