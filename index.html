@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="keywords" content="Metalens, Computational photography, Diffusion model, Spatially varying degradation">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-site-verification" content="IYymxWwPaxtVlFH8FLH35zgFoZlGsJb2dLcENRc0unw" />
+  <title>Degradation-Modeled Multipath Diffusion for Tunable Metalens Photography</title>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NH1SJVRE8F"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-NH1SJVRE8F');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+  <script
+	type="text/javascript"
+    async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_HTML"
+  ></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-3 publication-title">Degradation-Modeled Multipath Diffusion for Tunable Metalens Photography<br></br></h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              Anonymous ICCV submission</span>
+
+            </span>
+          </div>
+         
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <img src="./static/images/teaser.png" alt="Main Results">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Metalenses offer significant potential for ultra-compact computational imaging but face challenges from complex optical degradation and computational restoration difficulties. 
+            Existing methods typically rely on precise optical calibration or massive paired datasets, which are non-trivial for real-world imaging systems. Furthermore, a lack of control over the inference process often results in undesirable hallucinated artifacts.
+            We introduce Degradation-Modeled Multipath Diffusion for tunable metalens photography, leveraging powerful natural image priors from pretrained models instead of large datasets. Our framework uses positive, neutral, and negative-prompt paths to balance high-frequency detail generation, structural fidelity, and suppression of metalens-specific degradation, alongside <i>pseudo</i> data augmentation. A tunable decoder enables controlled trade-offs between fidelity and perceptual quality. Additionally, a spatially varying degradation-aware attention (SVDA) module adaptively models complex optical and sensor-induced degradation.
+            Finally, we design and build a millimeter-scale MetaCamera for real-world validation. Extensive results show that our approach outperforms state-of-the-art methods, achieving high-fidelity and sharp image reconstruction. More materials: <i>https://dmdiff.github.io/</i>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Method Overview</h2>
+        <div class="content has-text-justified">
+          <p>
+            <b>(Above)</b> The network architecture DMDiff consists of a VAE encoder, a latent diffusion UNet, a VAE decoder, and our spatially varying degradation aware attention module.
+            Here, we employ SD-Turbo, a distilled version of Stable Diffusion, as the base encoder, UNet and decoder.
+            Given an input image \(I\) captured by our MetaCamera, the model encodes \(I\) into the latent space via the VAE encoder \(E\), producing the latent coded image \(z\).
+            Next, the UNet iteratively denoises the latent coded image \(z\) for \(k\) times, leveraging the given text prompt and spatially varying degradation cues from our SVDA module. This step ensures that the denoised latent coded image \(z\) aligns with natural image priors while mitigating metalens-specific degradation.
+            the VAE decoder \(D\) converts the refined latent coded image \(z\) back into a high-quality reconstructed image. In this manuscript, we set \(k=1\) to realize efficient one-step reconstruction.
+            To adapt the powerful pre-trained model for metasurface photography, we incorporate trainable LoRA layers for fine-tuning the VAE encoder and latent diffusion UNet.
+          </p>
+          <p>
+            We propose the Spatially Varying Degradation Aware (SVDA) attention module, which enables the network to learn degradation characteristics and correct them adaptively. Instead of depending on an accurate PSF, SVDA quantifies degradation by analyzing optical degradation from simulated PSFs and incorporating quality assessments (QA) from metalens-captured images. Meanwhile, degradation introduced by the electronic sensor is also quantified using QA results. This degradation representation is then incorporated into the LoRA fine-tuning process via an attention mechanism, allowing the diffusion model to focus on region-specific degradations and enhance restoration accordingly. By leveraging SVDA, our method eliminates the need for precise aberration calibration while enabling more robust and data-driven image reconstruction.
+            To quantify optical aberrations, we use the Full Width at Half Maximum (FWHM) as a metric to assess the degradation. The FWHM is defined as the width of a distribution, specifically the distance between the points where the function reaches half of its maximum value.
+            To quantify the remaining degradation, we introduce No-Reference Image Quality Assessment (NR-IQA) using the transformer-based MUSIQ metric to measure the degradation directly from the captured image patches.
+          </p>
+          <p>
+            <b>(Below)</b> We propose a multi-prompt training and inference algorithm for DMDiff that balances detail enhancement with fidelity preservation while mitigating metalens-specific degradation.
+            Specifically, our training algorithm consists of three paths with positive, neutral, and negative prompts. The neutral and positive paths take the MetaCamera-captured image as input, with the positive path learning to reconstruct the high-quality groundtruth image and the neutral path learning to reconstruct a filtered groundtruth image. Here, an edge-preserving low-pass filter is applied to the groundtruth image to remove high-frequency details while preserving strong structural content.
+            In contrast, the negative path takes the high-quality groundtruth image as input and learns to generate a degraded version that mimics a MetaCamera-captured image. The three paths are conditioned on different text prompts, which are provided in the supplementary material.
+            The neutral-prompt path enables dynamic control between subjective perceptual quality and objective accuracy.
+            The negative-prompt path helps the network learn and avoid metalens-style degradation. Additionally, since capturing pixel-aligned training pairs with a real MetaCamera is time-consuming, this reverse diffusion process can generate <i>pseudo</i> input-ground truth pairs, effectively expanding the dataset and improving generalization.
+          </p>
+          <img src="./static/images/multipath_diffusion_model.png" alt="Overview for our method">
+          <br><br>
+          <img src="./static/images/training_and_inference.png" alt="Overview for our method">
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">More Results</h2>
+        <div class="content has-text-justified">
+          <figure>
+            <img src="./static/images/supp_exp_1.png" alt="Qualitative results for our method">
+            <figcaption>Qualitative comparisons of different methods on real-world images captured by our system.</figcaption>
+          </figure>
+        </div>
+        <div class="content has-text-justified">
+          <figure>
+            <img src="./static/images/supp_exp_2.png" alt="Qualitative results for our method">
+            <figcaption>Qualitative comparisons of different methods on our unseen test dataset, zoom in for details.</figcaption>
+          </figure>
+        </div>
+        <hr>
+        <h2 class="title is-4">Comparison with pretrained diffusion models : Example 1</h2>
+        <div class="columns is-vcentered interpolation-panel">
+          <div class="column is-3 has-text-centered">
+            <img src="./static/images/input_1.png"
+                 class="interpolation-image"
+                 alt="Interpolate start reference image."/>
+            <p>Input</p>
+          </div>
+          <div class="column interpolation-video-column is-centered">
+            <div id="interpolation-image-wrapper" class="is-centered">
+              Loading...
+            </div>
+            <input class="slider is-fullwidth is-large is-info"
+                   id="interpolation-slider"
+                   step="1" min="0" max="4" value="3" type="range">
+          </div>
+       
+          <div class="column is-3 has-text-centered">
+            <img src="./static/images/input_2.png"
+                 class="interpolation-image"
+                 alt="Interpolate start reference image."/>
+            <p>Input</p>
+          </div>
+          <div class="column interpolation-video-column is-centered">
+            <div id="interpolation-image-wrapper2" class="is-centered">
+              Loading...
+            </div>
+            <input class="slider is-fullwidth is-large is-info"
+                   id="interpolation-slider2"
+                   step="1" min="0" max="4" value="3" type="range">
+          </div>
+        </div>
+
+
+        <div class="columns is-vcentered interpolation-panel">
+          <div class="column is-3 has-text-centered">
+            <img src="./static/images/input_3.png"
+                 class="interpolation-image"
+                 alt="Interpolate start reference image."/>
+            <p>Input</p>
+          </div>
+          <div class="column interpolation-video-column is-centered">
+            <div id="interpolation-image-wrapper3" class="is-centered">
+              Loading...
+            </div>
+            <input class="slider is-fullwidth is-large is-info"
+                   id="interpolation-slider3"
+                   step="1" min="0" max="4" value="3" type="range">
+          </div>
+
+          <div class="column is-3 has-text-centered">
+            <img src="./static/images/input_4.png"
+                 class="interpolation-image"
+                 alt="Interpolate start reference image."/>
+            <p>Input</p>
+          </div>
+          <div class="column interpolation-video-column is-centered">
+            <div id="interpolation-image-wrapper4" class="is-centered">
+              Loading...
+            </div>
+            <input class="slider is-fullwidth is-large is-info"
+                   id="interpolation-slider4"
+                   step="1" min="0" max="4" value="3" type="range">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>
+
+    </code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website template is borrowed from 
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
