@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="keywords" content="Metalens, Computational photography, Diffusion model, Spatially varying degradation">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.8">
   <meta name="google-site-verification" content="IYymxWwPaxtVlFH8FLH35zgFoZlGsJb2dLcENRc0unw" />
   <title>Degradation-Modeled Multipath Diffusion for Tunable Metalens Photography</title>
 
@@ -126,24 +126,9 @@
         <h2 class="title is-3">Method Overview</h2>
         <div class="content has-text-justified">
           <p>
-            <b>(Above)</b> The network architecture DMDiff consists of a VAE encoder, a latent diffusion UNet, a VAE decoder, and our spatially varying degradation aware attention module.
-            Here, we employ SD-Turbo, a distilled version of Stable Diffusion, as the base encoder, UNet and decoder.
-            Given an input image \(I\) captured by our MetaCamera, the model encodes \(I\) into the latent space via the VAE encoder \(E\), producing the latent coded image \(z\).
-            Next, the UNet iteratively denoises the latent coded image \(z\) for \(k\) times, leveraging the given text prompt and spatially varying degradation cues from our SVDA module. This step ensures that the denoised latent coded image \(z\) aligns with natural image priors while mitigating metalens-specific degradation.
-            the VAE decoder \(D\) converts the refined latent coded image \(z\) back into a high-quality reconstructed image. In this manuscript, we set \(k=1\) to realize efficient one-step reconstruction.
-            To adapt the powerful pre-trained model for metasurface photography, we incorporate trainable LoRA layers for fine-tuning the VAE encoder and latent diffusion UNet.
-          </p>
-          <p>
-            We propose the Spatially Varying Degradation Aware (SVDA) attention module, which enables the network to learn degradation characteristics and correct them adaptively. Instead of depending on an accurate PSF, SVDA quantifies degradation by analyzing optical degradation from simulated PSFs and incorporating quality assessments (QA) from metalens-captured images. Meanwhile, degradation introduced by the electronic sensor is also quantified using QA results. This degradation representation is then incorporated into the LoRA fine-tuning process via an attention mechanism, allowing the diffusion model to focus on region-specific degradations and enhance restoration accordingly. By leveraging SVDA, our method eliminates the need for precise aberration calibration while enabling more robust and data-driven image reconstruction.
-            To quantify optical aberrations, we use the Full Width at Half Maximum (FWHM) as a metric to assess the degradation. The FWHM is defined as the width of a distribution, specifically the distance between the points where the function reaches half of its maximum value.
-            To quantify the remaining degradation, we introduce No-Reference Image Quality Assessment (NR-IQA) using the transformer-based MUSIQ metric to measure the degradation directly from the captured image patches.
-          </p>
-          <p>
-            <b>(Below)</b> We propose a multi-prompt training and inference algorithm for DMDiff that balances detail enhancement with fidelity preservation while mitigating metalens-specific degradation.
-            Specifically, our training algorithm consists of three paths with positive, neutral, and negative prompts. The neutral and positive paths take the MetaCamera-captured image as input, with the positive path learning to reconstruct the high-quality groundtruth image and the neutral path learning to reconstruct a filtered groundtruth image. Here, an edge-preserving low-pass filter is applied to the groundtruth image to remove high-frequency details while preserving strong structural content.
-            In contrast, the negative path takes the high-quality groundtruth image as input and learns to generate a degraded version that mimics a MetaCamera-captured image. The three paths are conditioned on different text prompts, which are provided in the supplementary material.
-            The neutral-prompt path enables dynamic control between subjective perceptual quality and objective accuracy.
-            The negative-prompt path helps the network learn and avoid metalens-style degradation. Additionally, since capturing pixel-aligned training pairs with a real MetaCamera is time-consuming, this reverse diffusion process can generate <i>pseudo</i> input-ground truth pairs, effectively expanding the dataset and improving generalization.
+            To tackle the challenges of metalens-based imaging, we propose a degradation-modeled multipath diffusion framework that leverages pretrained large-scale generative diffusion models for tunable metalens photography. Our approach addresses three key challenges: complex metalens degradations, limited paired training data, and hallucinations in generative models.
+
+            With the powerful natural image priors from the base generative diffusion model, our method reconstructs vivid and realistic images using a small training dataset. To further enhance restoration, we propose a Spatially Varying Degradation-Aware (SVDA) attention module, which quantifies optical aberrations and sensor-induced noise to guide the restoration process. Additionally, we introduce a Degradation-modeled Multipath Diffusion (DMDiff) framework, incorporating positive, neutral, and negative-prompt paths to balance detail enhancement and structural fidelity while mitigating metalens-specific distortions. Finally, we design an instantly tunable decoder, enabling dynamic control over reconstruction quality to suppress hallucinations.
           </p>
           <img src="./static/images/multipath_diffusion_model.png" alt="Overview for our method">
           <br><br>
@@ -251,19 +236,6 @@
 </section>
 
 
-<footer class="footer">
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content">
-          <p>
-            This website template is borrowed from 
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</footer>
 
 </body>
 </html>
