@@ -3,22 +3,25 @@
 <head>
   <meta charset="utf-8">
   <meta name="keywords" content="Metalens, Computational photography, Diffusion model, Spatially varying degradation">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0">
-  <meta name="google-site-verification" content="IYymxWwPaxtVlFH8FLH35zgFoZlGsJb2dLcENRc0unw" />
-  <title>Degradation-Modeled Multipath Diffusion for Tunable Metalens Photography</title>
+  <meta name="viewport" content="width=device-width*0.6, initial-scale=1">
+  <title>DMDiff: Degradation-Modeled Multipath Diffusion for Tunable Metalens Photography</title>
 
+  <!-- <meta name="google-site-verification" content="IYymxWwPaxtVlFH8FLH35zgFoZlGsJb2dLcENRc0unw" /> -->
   <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NH1SJVRE8F"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
     gtag('js', new Date());
 
-    gtag('config', 'G-NH1SJVRE8F');
+    gtag('config', 'G-PYVRSFMDRL');
   </script>
 
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
-        rel="stylesheet">
+  <!-- <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet"> -->
 
   <link rel="stylesheet" href="./static/css/bulma.min.css">
   <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
@@ -69,16 +72,65 @@
         <div class="column has-text-centered">
           <h1 class="title is-3 publication-title">Degradation-Modeled Multipath Diffusion for Tunable Metalens Photography<br></br></h1>
           <div class="is-size-5 publication-authors">
-            <span class="author-block">
-              Anonymous ICCV submission</span>
 
+            <span class="author-block">
+              <a href="">Jianing Zhang</a><sup>2, 3</sup></span>&nbsp;&nbsp;
+            <span class="author-block">
+              <a href="">Jiayi Zhu</a><sup>1</sup></span>&nbsp;&nbsp;
+            <span class="author-block">
+              <a href="">Feiyu Ji</a><sup>1</sup></span>&nbsp;&nbsp;
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=yDEavdMAAAAJ&hl=en">Xiaokang Yang</a><sup>1</sup></span>&nbsp;&nbsp;
+            <span class="author-block">
+              <a href="https://xiaoyunyuan.net/">Xiaoyun Yuan</a><sup>1</sup></span>&nbsp;&nbsp;
+          </div>
+
+          <div class="is-size-6 publication-authors">
+            <span class="author-block"><sup>1</sup>MoE Key Lab of Artificial Intelligence, AI Institute, Shanghai Jiao Tong University</span>&nbsp;&nbsp;
+            <span class="author-block"><sup>2</sup>Fudan University</span>
+            <span class="author-block"><sup>3</sup>Tsinghua University</span>
+            <br>
+            <span class="email-link">
+              <a href="mailto:yuanxiaoyun@sjtu.edu.cn">yuanxiaoyun@sjtu.edu.cn</a>
+              &nbsp;&nbsp;
+              <!-- <a href="mailto:tonghe90@gmail.com">tonghe90@gmail.com</a> -->
             </span>
           </div>
-         
 
           <div class="column has-text-centered">
             <div class="publication-links">
               <!-- PDF Link. -->
+
+              <span class="link-block">
+                <a href="./paper/ICCV2025.pdf"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2506.22753"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+
+              <span class="link-block">
+                <a href="https://github.com/yuanxy92/DMDiff_ICCV2025"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+
             </div>
 
           </div>
@@ -110,7 +162,7 @@
             Metalenses offer significant potential for ultra-compact computational imaging but face challenges from complex optical degradation and computational restoration difficulties. 
             Existing methods typically rely on precise optical calibration or massive paired datasets, which are non-trivial for real-world imaging systems. Furthermore, a lack of control over the inference process often results in undesirable hallucinated artifacts.
             We introduce Degradation-Modeled Multipath Diffusion for tunable metalens photography, leveraging powerful natural image priors from pretrained models instead of large datasets. Our framework uses positive, neutral, and negative-prompt paths to balance high-frequency detail generation, structural fidelity, and suppression of metalens-specific degradation, alongside <i>pseudo</i> data augmentation. A tunable decoder enables controlled trade-offs between fidelity and perceptual quality. Additionally, a spatially varying degradation-aware attention (SVDA) module adaptively models complex optical and sensor-induced degradation.
-            Finally, we design and build a millimeter-scale MetaCamera for real-world validation. Extensive results show that our approach outperforms state-of-the-art methods, achieving high-fidelity and sharp image reconstruction. More materials: <i>https://dmdiff.github.io/</i>.
+            Finally, we design and build a millimeter-scale MetaCamera for real-world validation. Extensive results show that our approach outperforms state-of-the-art methods, achieving high-fidelity and sharp image reconstruction. More materials: <i><a href="https://dmdiff.github.io/">https://dmdiff.github.io/</a></i>.
           </p>
         </div>
       </div>
@@ -234,8 +286,13 @@
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
     <pre><code>
-
-    </code></pre>
+      @article{zhang2025dmdiff,
+        title={Degradation-Modeled Multipath Diffusion for Tunable Metalens Photography},
+        author={Jianing Zhang, Jiayi Zhu, Feiyu Ji, Xiaokang Yang, and Xiaoyun Yuan},
+        booktitle={arxiv preprint arxiv:2506.22753}, 
+        year={2025}
+      }
+      </code></pre>
   </div>
 </section>
 
